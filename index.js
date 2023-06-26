@@ -1,7 +1,9 @@
 //index.js
 
+import countries from '@/geojson/countries.json'
+
 function testFunction() {
-    console.log("This is a test function")
+    console.log(Object.keys(countries))
 }
 
 export default testFunction
