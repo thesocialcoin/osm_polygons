@@ -5,7 +5,7 @@ import countries from './geojson/countries.json'
 import regions from './geojson/regions.json'
 import subregions from './geojson/subregions.json'
 
-function getCityPolygon(code) {
+export function getCityPolygon(code) {
     try {
         return cities[code]
     } catch {
@@ -13,7 +13,7 @@ function getCityPolygon(code) {
     }
 }
 
-function getCountryPolygon(code) {
+export function getCountryPolygon(code) {
     try {
         return countries[code]
     } catch {
@@ -21,7 +21,7 @@ function getCountryPolygon(code) {
     }
 }
 
-function getRegionPolygon(code) {
+export function getRegionPolygon(code) {
     try {
         return regions[code]
     } catch {
@@ -29,15 +29,10 @@ function getRegionPolygon(code) {
     }
 }
 
-function getSubregionPolygon(code) {
+export function getSubregionPolygon(code) {
     try {
         return subregions[code]
     } catch {
         return {}
     }
 }
-
-export function getCityPolygon()
-export function getCountryPolygon()
-export function getRegionPolygon()
-export function getSubregionPolygon()
