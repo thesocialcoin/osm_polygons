@@ -37,9 +37,7 @@ function getSubregionPolygon(code) {
     }
 }
 
-export default {
-    getCityPolygon,
-    getCountryPolygon,
-    getRegionPolygon,
-    getSubregionPolygon
-}
+export function getCityPolygon()
+export function getCountryPolygon()
+export function getRegionPolygon()
+export function getSubregionPolygon()
