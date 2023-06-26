@@ -1,6 +1,6 @@
 //index.js
 
-import countries from '@/geojson/countries.json'
+import countries from './geojson/countries.json'
 
 function testFunction() {
     console.log(Object.keys(countries))
