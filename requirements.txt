@@ -1,3 +1,6 @@
-fastapi==0.98.0
-pydantic==1.10.9
+fastapi==0.99.1
+pydantic==1.10.11
 uvicorn==0.22.0
+requests==2.31.0
+sentry-sdk==1.27.0
+osm-mapping @ git+https://github.com/thesocialcoin/osm_mapping.git#latest
