@@ -29,14 +29,14 @@ def home():
 
 
 @app.get("/polygons")
-def polygons(zoom_level: str, codes: str = ""):
+def polygons(zoom_level: str, country_codes: str = ""):
     validate_zoom_level(zoom_level)
 
-    return get_features_from_file(zoom_level, codes)
+    return get_features_from_file(zoom_level, country_codes)
 
 
 @app.post("/add_polygon")
-def add_polygon(zoom_level: str, code: str):
+def add_polygon(zoom_level: str, country_code: str):
     validate_zoom_level(zoom_level)
 
-    return get_feature_from_nominatim(zoom_level, code)
+    return get_feature_from_nominatim(zoom_level, country_code)
