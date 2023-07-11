@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from src import __version__
+from src.settings import init_db
 from src.utils import get_features_from_file, get_feature_from_nominatim
 from src.validators import validate_zoom_level
 
@@ -15,6 +16,11 @@ app.add_middleware(
     allow_methods=["*"],
     allow_origins=["*"],
 )
+
+
+@app.on_event("startup")
+async def start_db():
+    await init_db()
 
 
 @app.get("/")

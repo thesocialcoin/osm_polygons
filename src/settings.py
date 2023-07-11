@@ -1,3 +1,5 @@
+from beanie import init_beanie
+from motor.motor_asyncio import AsyncIOMotorClient
 from pydantic import BaseSettings
 
 import sentry_sdk
@@ -15,3 +17,15 @@ sentry_sdk.init(
     dsn="https://d579829e2ab94aaf80e043fd0e82efba@issues.citibeats.com/29",
     traces_sample_rate=settings.sentry_traces_sample_rate
 )
+
+
+async def init_db():
+    client = AsyncIOMotorClient("mongodb://root:secret@db:27017")
+
+    await init_beanie(
+        database=client.polygons,
+        document_models=[
+            # Insert here the models
+            "src.models.city.City",
+        ],
+    )
