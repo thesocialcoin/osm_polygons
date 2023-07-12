@@ -27,5 +27,8 @@ async def init_db():
         document_models=[
             # Insert here the models
             "src.models.city.City",
+            "src.models.country.Country",
+            "src.models.region.Region",
+            "src.models.subregion.Subregion",
         ],
     )
