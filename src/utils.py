@@ -36,21 +36,25 @@ async def get_feature_from_nominatim(zoom_level: str, code: str):
     else:
         osmtype, osmid = code[0], code[1:]
 
-    endpoint = settings.nominatim_endpoint
-    parameters = f"?osmtype={osmtype}&osmid={osmid}&polygon_geojson=1&format=json"
-    response = requests.get(endpoint + parameters)
-    if response.status_code == 200:
-        osm_polygon = response.json()
-    elif response.status_code == 400:
-        raise HTTPException(status_code=400)
-
+    osm_polygon = get_osm_polygon(osmtype, osmid)
     feature = format_geojson(osm_polygon)
-    country = feature["properties"]["country_code"].upper()
 
+    country = feature["properties"]["country_code"].upper()
     new_polygon = model(id=code, country_code=country, **feature)
     await new_polygon.create()
 
     return new_polygon
+
+
+def get_osm_polygon(osmtype: str, osmid: str):
+    endpoint = settings.nominatim_endpoint
+    query_params = f"?osmtype={osmtype}&osmid={osmid}&polygon_geojson=1&format=json"
+    response = requests.get(endpoint + query_params)
+
+    if not response.ok:
+        raise HTTPException(status_code=400)
+
+    return response.json()
 
 
 def format_geojson(osm_polygon: dict):
