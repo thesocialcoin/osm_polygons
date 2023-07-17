@@ -8,6 +8,7 @@ from src import __version__
 
 
 class Settings(BaseSettings):
+    mongodb_url: str = "db"
     nominatim_endpoint: str = "http://nominatim.ctb.internal/details"
     sentry_environment: str = "local"
     sentry_traces_sample_rate: float = 0
@@ -25,7 +26,7 @@ sentry_sdk.init(
 
 
 async def init_db():
-    client = AsyncIOMotorClient("mongodb://root:secret@db:27017")
+    client = AsyncIOMotorClient(f"mongodb://root:secret@{settings.mongodb_url}:27017")
 
     await init_beanie(
         database=client.polygons,
