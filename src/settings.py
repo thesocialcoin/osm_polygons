@@ -6,7 +6,7 @@ import sentry_sdk
 
 
 class Settings(BaseSettings):
-    nominatim_endpoint: str
+    nominatim_endpoint: str = "http://nominatim.ctb.internal/details"
     sentry_traces_sample_rate: float = 0
 
 
