@@ -12,6 +12,7 @@ class Settings(BaseSettings):
     nominatim_endpoint: str = "http://nominatim.ctb.internal/details"
     sentry_environment: str = "local"
     sentry_traces_sample_rate: float = 0
+    secret_token: str = ""
 
 
 settings = Settings()
