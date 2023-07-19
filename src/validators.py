@@ -12,7 +12,7 @@ ZOOM_LEVEL_CHOICES = (
 
 
 def authenticate(request: Request) -> None:
-    token = request.headers['authorization']
+    token = request.headers.get('authorization')
     if token != settings.secret_token:
         raise HTTPException(status_code=401)
 
