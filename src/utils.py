@@ -28,7 +28,7 @@ async def get_features_from_db(zoom_level: str, country_codes: str):
 async def get_feature_from_nominatim(zoom_level: str, code: str):
     model = ZOOM_LEVEL_TO_MODELS[zoom_level]
     if feature := await model.get(code):
-        return feature
+        return feature, True
 
     if zoom_level == "country":
         osm_id = countries.get_osm_id(code)
@@ -43,7 +43,7 @@ async def get_feature_from_nominatim(zoom_level: str, code: str):
     new_polygon = model(id=code, country_code=country, **feature)
     await new_polygon.create()
 
-    return new_polygon
+    return new_polygon, False
 
 
 def get_osm_polygon(osmtype: str, osmid: str):

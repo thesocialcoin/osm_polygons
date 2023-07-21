@@ -1,4 +1,3 @@
-from datetime import timedelta
 from typing import Dict
 
 from beanie import Document
@@ -10,7 +9,3 @@ class Region(Document):
     type: str
     properties: Dict
     geometry: Dict
-
-    class Settings:
-        use_cache = True
-        cache_expiration_time = timedelta(seconds=60)
