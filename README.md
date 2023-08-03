@@ -10,44 +10,24 @@ The country [codes](https://restcountries.com/v3.1/independent?status=true&field
 
 ## 🛠 Build and run the code
 
-To build the code you can use the following command:
-```bash
-docker-compose build
-```
+- Set up the environment variables:
 
-To run it:
-```bash
-docker-compose up
-```
+    ```bash
+    cp .env.default .env
+    ```
 
-## 🔌 API
+    [Go to the file](.env) and fill the environment variables described there.
 
-### `/polygons`
+- Build the code you can use the following command:
+    ```bash
+    docker-compose build
+    ```
 
-- Parameters
+- Run the code with the following command:
+    ```bash
+    docker-compose up
+    ```
 
-    - `zoom_level`
-        The zoom level of the features (choices are country, region, subregion and city)
-    - `country_codes`
-        List of country codes of the features you want
-    
-    Example: `/polygons?zoom_level=country&country_codes=ES,FR`
+## 🔌 API Documentation
 
-- Returns
-
-    An object of features with key being the code of the polygon and the value the features itself
-
-### `/add_polygon`
-
-- Parameters
-
-    - `zoom_level`
-        The zoom level of the features (choices are country, region, subregion and city)
-    - `code`
-        Code of the feature you want to add to the DB
-    
-    Example: `/add_polygon?zoom_level=country&code=R127534`
-
-- Returns
-
-    The feature related to the code.
+For a fully detailed API documentation, you can go to [this URL](http://localhost:6500/docs).
